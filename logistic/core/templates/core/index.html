@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Грузоперевозки - Быстро и Надежно</title>
+    <link rel="stylesheet" href={% static "styles.css" %}>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Грузоперевозки</div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#about">О нас</a></li>
+                <!-- Кнопка входа -->
+                <li><a href="{% url 'login' %}" class="login-button">Вход</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Слайдер изображений -->
+
+
+    <section id="services" class="services">
+        <h2>Наши услуги</h2>
+        <div class="service-cards">
+            <div class="card">
+                <h3>Грузоперевозки по городу</h3>
+                <p>Оперативная доставка грузов по городу в кратчайшие сроки.</p>
+            </div>
+            <div class="card">
+                <h3>Междугородние перевозки</h3>
+                <p>Надежные перевозки грузов между городами и регионами.</p>
+            </div>
+            <div class="card">
+                <h3>Международные перевозки</h3>
+                <p>Организация международных грузоперевозок с соблюдением всех норм.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="slider">
+        <div class="slides">
+            <div class="slide active">
+                <img src="{% static "truck1.jpg" %}" alt="Грузовик 1">
+            </div>
+            <div class="slide">
+                <img src="{% static "truck2.jpg" %}" alt="Грузовик 2">
+            </div>
+            <div class="slide">
+                <img src="{% static "truck3.jpg" %}" alt="Грузовик 3">
+            </div>
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+    </section>
+
+    <section id="about" class="about">
+        <h2>О нас</h2>
+        <p>Мы — компания с многолетним опытом в сфере грузоперевозок. Наша команда профессионалов гарантирует безопасность и своевременность доставки ваших грузов.</p>
+    </section>
+
+
+    <footer>
+        <p>&copy; 2025 Владислав Похарьков.</p>
+    </footer>
+
+    <script src="{% static "script.js" %}"></script>
+</body>
+</html>

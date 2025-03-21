@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в систему</title>
+    <link rel="stylesheet" href={% static "styles.css" %}>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Грузоперевозки</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li><a href="{% url 'register' %}" class="login-button">Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="auth-section">
+        <h2>Вход в систему</h2>
+        <form id="login-form">
+            <input type="email" placeholder="Ваш email" required>
+            <input type="password" placeholder="Ваш пароль" required>
+            <button type="submit">Войти</button>
+        </form>
+        <p>Нет аккаунта? <a href="{% url 'register' %}">Зарегистрируйтесь</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Владислав Похарьков.</p>
+    </footer>
+</body>
+</html>
