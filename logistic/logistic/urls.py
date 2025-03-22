@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),  # Маршруты для приложения core
     path('register/', include('register.urls')),  # Маршруты для приложения register
+    path('account/', include('account.urls')),
 ]
