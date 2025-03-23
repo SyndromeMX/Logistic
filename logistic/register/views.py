@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 
+from account.models import UserProfile  # Импортируем модель UserProfile
+
 def login_in(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -12,7 +14,7 @@ def login_in(request):
         user = authenticate(request, username=name, password=password)
         if user is not None:
             login(request, user)
-            return redirect('index')  # Перенаправляем на главную страницу
+            return redirect('account')  # Перенаправляем на главную страницу
         else:
             messages.error(request, 'Неверный email или пароль')
     
@@ -37,11 +39,13 @@ def register(request):
 
         # Создание нового пользователя
         user = User.objects.create_user(username=username, email=email, password=password)
-        user.save()
+
+        # Создание пустого профиля пользователя
+        UserProfile.objects.create(user=user)
 
         # Аутентификация и вход пользователя после регистрации
         login(request, user)
         messages.success(request, 'Регистрация прошла успешно! Добро пожаловать.')
-        return redirect('index')  # Перенаправляем на главную страницу
+        return redirect('login')  # Перенаправляем на главную страницу
     
     return render(request, 'register/register.html')
