@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from account.models import UserProfile
+from company.models import Company
 from django.contrib.auth import logout
 
 @login_required
@@ -14,6 +15,8 @@ def account(request):
     except UserProfile.DoesNotExist:
         user_profile = UserProfile.objects.create(user=user)
 
+    companies = Company.objects.all()
+
     context = {
         'first_name' : user_profile.first_name,
         'last_name' : user_profile.last_name,
@@ -22,6 +25,7 @@ def account(request):
         'workplace' : user_profile.workplace,
         'email' : user_profile.email,
         'phone' : user_profile.phone,
+        'companies': companies,
     }
 
     return render(request, 'account/account.html', context)

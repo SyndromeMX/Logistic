@@ -17,8 +17,7 @@
             <ul class="sidebar-links">
                 <li><a href="#profile">Профиль</a></li>
                 <li><a href="#settings">Настройки</a></li>
-                <li><a href="#orders">Заказы</a></li>
-                <li><a href="#support">Поддержка</a></li>
+                <li><a href="{% url "cargo" %}">Заказы</a></li>
                 <li><a href="logout_out">Выйти</a></li>
             </ul>
         </aside>
@@ -54,22 +53,28 @@
                     {% csrf_token %}
                     <label for="first-name-input">Имя:</label>
                     <input type="text" id="first-name-input" name="first_name" value="{{ first_name }}">
-
+                
                     <label for="last-name-input">Фамилия:</label>
                     <input type="text" id="last-name-input" name="last_name" value="{{ last_name }}">
-
+                
                     <label for="middle-name-input">Отчество:</label>
                     <input type="text" id="middle-name-input" name="middle_name" value="{{ middle_name }}">
-
+                
                     <label for="workplace-input">Компания:</label>
-                    <input type="text" id="workplace-input" name="workplace" value="{{ workplace }}">
-
+                    <select id="workplace-input" name="workplace">
+                        {% for company in companies %}
+                            <option value="{{ company.name }}" {% if company.name == workplace %}selected{% endif %}>
+                                {{ company.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                
                     <label for="email-input">Email:</label>
                     <input type="email" id="email-input" name="email" value="{{ email }}">
-
+                
                     <label for="phone-input">Телефон:</label>
                     <input type="text" id="phone-input" name="phone" value="{{ phone }}">
-
+                
                     <button type="submit">Сохранить</button>
                     <button type="button" onclick="disableEditMode()">Отмена</button>
                 </form>

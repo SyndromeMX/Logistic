@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аккаунт</title>
+    <link rel="stylesheet" href="{% static 'styles_acc.css' %}">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Меню</h2>
+                <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="{% url 'account' %}">Профиль</a></li>
+                <li><a href="{% url 'account' %}">Настройки</a></li>
+                <li><a href="#orders">Заказы</a></li>
+                <li><a href="#support">Поддержка</a></li>
+                <li><a href="logout_out">Выйти</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <nav>
+                    <div class="logo">Грузоперевозки компании: <span id="workplace">{{ workplace }}</span></div>
+                    <ul class="nav-links">
+                        <li><a href="{% url 'index' %}">Главная</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#about">О нас</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section class="cargo-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Вес (кг)</th>
+                            <th>Длина (м)</th>
+                            <th>Ширина (м)</th>
+                            <th>Высота (м)</th>
+                            <th>Точка отправления</th>
+                            <th>Точка прибытия</th>
+                            <th>Время отправления</th>
+                            <th>Время прибытия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cargo in cargo_list %}
+                        <tr>
+                            <td>{{ cargo.weight }}</td>
+                            <td>{{ cargo.length }}</td>
+                            <td>{{ cargo.width }}</td>
+                            <td>{{ cargo.height }}</td>
+                            <td>{{ cargo.departure_point }}</td>
+                            <td>{{ cargo.destination_point }}</td>
+                            <td>{{ cargo.departure_date }}</td>
+                            <td>{{ cargo.arrival_date }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="8">Нет доступных грузов.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Владислав Похарьков.</p>
+    </footer>
+
+    <script src="{% static 'script_acc.js' %}"></script>
+</body>
+</html>
