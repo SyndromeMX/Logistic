@@ -1,10 +1,8 @@
-// Функция для переключения бокового меню
 function toggleSidebar() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('active');
 }
 
-// Закрытие меню при клике вне его области
 document.addEventListener('click', function (event) {
     const sidebar = document.querySelector('.sidebar');
     const toggleBtn = document.querySelector('.toggle-btn');
@@ -13,3 +11,17 @@ document.addEventListener('click', function (event) {
         sidebar.classList.remove('active');
     }
 });
+
+function enableEditMode() {
+    document.querySelector('.info-card').style.display = 'none';
+    document.getElementById('edit-button').style.display = 'none';
+
+    document.getElementById('edit-form').style.display = 'block';
+}
+
+function disableEditMode() {
+    document.querySelector('.info-card').style.display = 'block';
+    document.getElementById('edit-button').style.display = 'block';
+
+    document.getElementById('edit-form').style.display = 'none';
+}

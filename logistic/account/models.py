@@ -3,17 +3,15 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 class UserProfile(models.Model):
-    # Связь с моделью User
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
-    # Выбор ролей (можно изменить или расширить)
     ROLE_CHOICES = [
         ('admin', 'Администратор'),
         ('manager', 'Менеджер'),
         ('employee', 'Сотрудник'),
         ('client', 'Клиент'),
     ]
-    # Основные поля
+    
     first_name = models.CharField(max_length=50, verbose_name='Имя', blank=True, null=True)
     last_name = models.CharField(max_length=50, verbose_name='Фамилия', blank=True, null=True)
     middle_name = models.CharField(max_length=50, verbose_name='Отчество', blank=True, null=True)

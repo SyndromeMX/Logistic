@@ -1,4 +1,3 @@
-/* Общие стили для body и html */
 html, body {
     height: 100%;
     margin: 0;
@@ -10,14 +9,12 @@ html, body {
     flex-direction: column;
 }
 
-/* Основной контейнер для контента */
 .container {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* Стили для header */
 header {
     background-color: #ff8c42;
     padding: 20px 0;
@@ -63,12 +60,10 @@ nav {
     background-color: #45a049;
 }
 
-/* Стили для секции аутентификации */
-/* Стили для секции аутентификации */
 .auth-section {
-    max-width: 1000px; /* Увеличили ширину */
+    max-width: 1000px; 
     margin: auto;
-    padding: 40px; /* Увеличили отступы */
+    padding: 40px; 
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -81,21 +76,21 @@ nav {
 
 .auth-section h2 {
     font-size: 28px;
-    margin-bottom: 30px; /* Увеличили отступ */
+    margin-bottom: 30px;
     color: #333;
 }
 
 .auth-section form {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Увеличили расстояние между полями */
+    gap: 20px;
 }
 
 .auth-section input {
     width: 100%;
-    padding: 15px; /* Увеличили отступы внутри полей */
+    padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 10px; /* Слегка увеличили скругление */
+    border-radius: 10px;
     font-size: 16px;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
@@ -112,7 +107,7 @@ nav {
     color: #fff;
     padding: 15px;
     border: none;
-    border-radius: 10px; /* Слегка увеличили скругление */
+    border-radius: 10px;
     font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -123,7 +118,7 @@ nav {
 }
 
 .auth-section p {
-    margin-top: 20px; /* Увеличили отступ */
+    margin-top: 20px;
     font-size: 14px;
     color: #555;
 }
@@ -136,11 +131,11 @@ nav {
 .auth-section a:hover {
     text-decoration: underline;
 }
-/* Стили для футера */
+
 footer {
     background-color: #ff8c42;
     color: #fff;
     text-align: center;
     padding: 20px 0;
-    margin-top: auto; /* Прикрепляем футер к низу */
+    margin-top: auto; 
 }

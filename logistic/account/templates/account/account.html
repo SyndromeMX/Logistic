@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Боковое меню -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <h2>Меню</h2>
@@ -20,37 +19,60 @@
                 <li><a href="#settings">Настройки</a></li>
                 <li><a href="#orders">Заказы</a></li>
                 <li><a href="#support">Поддержка</a></li>
-                <li><a href="">Выйти</a></li>
+                <li><a href="logout_out">Выйти</a></li>
             </ul>
         </aside>
 
-        <!-- Основной контент -->
         <main class="main-content">
             <header>
                 <nav>
                     <div class="logo">Грузоперевозки</div>
                     <ul class="nav-links">
-                        <li><a href="#home">Главная</a></li>
+                        <li><a href="{% url "index" %}">Главная</a></li>
                         <li><a href="#services">Услуги</a></li>
                         <li><a href="#about">О нас</a></li>
                     </ul>
                 </nav>
             </header>
 
-            <!-- Секция настроек -->
             <section id="settings" class="settings-section">
                 <h2>Настройки аккаунта</h2>
                 <div class="user-info">
                     <div class="info-card">
-                        <p><strong>Имя:</strong> {{ username }}</p>
-                        <p><strong>Фамилия:</strong> {{ last_name }}</p>
-                        <p><strong>Отчество:</strong> {{ middle_name }}</p>
-                        <p><strong>Роль:</strong> {{ role }}</p>
-                        <p><strong>Компания:</strong> {{ workplace }}</p>
-                        <p><strong>Email:</strong> {{ email }}</p>
-                        <p><strong>Телефон:</strong> {{ phone }}</p>
+                        <p><strong>Имя:</strong> <span id="first-name">{{ first_name }}</span></p>
+                        <p><strong>Фамилия:</strong> <span id="last-name">{{ last_name }}</span></p>
+                        <p><strong>Отчество:</strong> <span id="middle-name">{{ middle_name }}</span></p>
+                        <p><strong>Роль:</strong> <span id="role">{{ role }}</span></p>
+                        <p><strong>Компания:</strong> <span id="workplace">{{ workplace }}</span></p>
+                        <p><strong>Email:</strong> <span id="email">{{ email }}</span></p>
+                        <p><strong>Телефон:</strong> <span id="phone">{{ phone }}</span></p>
                     </div>
+                    <button id="edit-button" onclick="enableEditMode()">Редактировать</button>
                 </div>
+
+                <form id="edit-form" method="POST" action="{% url 'update_profile' %}" style="display: none;">
+                    {% csrf_token %}
+                    <label for="first-name-input">Имя:</label>
+                    <input type="text" id="first-name-input" name="first_name" value="{{ first_name }}">
+
+                    <label for="last-name-input">Фамилия:</label>
+                    <input type="text" id="last-name-input" name="last_name" value="{{ last_name }}">
+
+                    <label for="middle-name-input">Отчество:</label>
+                    <input type="text" id="middle-name-input" name="middle_name" value="{{ middle_name }}">
+
+                    <label for="workplace-input">Компания:</label>
+                    <input type="text" id="workplace-input" name="workplace" value="{{ workplace }}">
+
+                    <label for="email-input">Email:</label>
+                    <input type="email" id="email-input" name="email" value="{{ email }}">
+
+                    <label for="phone-input">Телефон:</label>
+                    <input type="text" id="phone-input" name="phone" value="{{ phone }}">
+
+                    <button type="submit">Сохранить</button>
+                    <button type="button" onclick="disableEditMode()">Отмена</button>
+                </form>
             </section>
         </main>
     </div>

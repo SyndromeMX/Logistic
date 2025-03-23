@@ -22,13 +22,10 @@ function prevSlide() {
     showSlide(currentSlide);
 }
 
-// Автоматическая прокрутка слайдов каждые 5 секунд
 setInterval(nextSlide, 5000);
 
-// Инициализация первого слайда
 showSlide(currentSlide);
 
-// Обработка формы (остается без изменений)
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
     alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
